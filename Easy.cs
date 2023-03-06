@@ -71,5 +71,52 @@ namespace leetCodeTrening
             } 
             return stack.Count == 0;
         }
+
+        /// <summary>
+        /// Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.For example, 2 is written as II in Roman numeral, just two ones added together. 12 is written as XII, which is simply X + II. The number 27 is written as XXVII, which is XX + V + II.Given a roman numeral, convert it to an integer.
+        /// <code>
+        /// Input: s = "MCMXCIV"
+        /// Output: 1994
+        /// Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+        /// </code>
+        /// </summary>
+        public int RomanToInt(string s)
+        {
+            int finishNamber = 0;
+            int indexNext = 0;
+            string collecshon = "IVXLCDM";
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (i < s.Length - 1)
+                    indexNext = collecshon.IndexOf(s[i + 1], 0);
+                else indexNext = 0;
+                int index = collecshon.IndexOf(s[i], 0);
+                if (index < indexNext)
+                {
+                    finishNamber +=
+                    (IndexInString(indexNext) - IndexInString(index));
+                    i += 1;
+                }
+                else { finishNamber += IndexInString(index); }
+            }
+            return finishNamber;
+        }
+
+        private int IndexInString(int index)
+        {
+            int nam = 0;
+            switch (index)
+            {
+                case 0: nam = 1; break;
+                case 1: nam = 5; break;
+                case 2: nam = 10; break;
+                case 3: nam = 50; break;
+                case 4: nam = 100; break;
+                case 5: nam = 500; break;
+                case 6: nam = 1000; break;
+            }
+            return nam;
+        }
     }
 }
