@@ -40,44 +40,37 @@ namespace leetCodeTrening
         /// Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input
         /// string is valid.An input string is valid if: Open brackets must be closed by the same type of brackets. Open
         /// brackets must be closed in the correct order. Every close bracket has a corresponding open bracket of the
-        /// same type. <code>Example 1: Input: s = "()" Output: true  Example 2: Input: s = "()[]{}" Output: true 
-        /// Example 3: Input: s = "(]" Output: false</code>
+        /// same type. <code>Example 1: Input: s = "()" Output: true   
+        /// Example 2: Input: s = "(]" Output: false</code>
         /// </summary>
 
         public bool IsValid(string s)
         {
-            int rezult = 0;
-            foreach(char ch in s)
+            Stack<char> stack = new Stack<char>();
+            for (int i = 0; i < s.Length; i++) 
             {
-                switch(ch)
+                char ch = s[i];
+                switch (ch)
                 {
                     case '(':
-                        var valid = s.IndexOf(')');
-                        if(valid == -1 || s.IndexOf('(') > valid)
-                        {
-                            return false;
-                        }
-                        rezult += 2;
+                        stack.Push(')');
                         break;
                     case '{':
-                        var valid_2 = s.IndexOf('}');
-                        if(valid_2 == -1 || s.IndexOf('{') > valid_2)
-                        {
-                            return false;
-                        }
-                        rezult += 2;
+                        stack.Push('}');
                         break;
                     case '[':
-                        var valid_3 = s.IndexOf(']');
-                        if(valid_3 == -1 || s.IndexOf('[') > valid_3)
-                        {
-                            return false;
-                        }
-                        rezult += 2;
+                        stack.Push(']');
+                        break;
+                    case ']':
+                    case '}':
+                    case ')':
+                        if (stack.Count == 0) return false;
+                        if (stack.Pop() != ch ) return false;
                         break;
                 }
-            }
-            return rezult % 2 == 0;
+                               
+            } 
+            return stack.Count == 0;
         }
     }
 }

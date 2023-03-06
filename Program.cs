@@ -13,7 +13,7 @@ namespace leetCodeTrening
         static void Main(string[] args)
         {
             Easy easy = new Easy();
-            Console.WriteLine(easy.IsValid("{(]}"));
+            Console.WriteLine(easy.IsValid("()[]{}"));
         }
     }
 }
