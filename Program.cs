@@ -13,12 +13,7 @@ namespace leetCodeTrening
         static void Main(string[] args)
         {
             Easy easy = new Easy();
-            int [] nums = { 2, 7, 11, 15 };
-            int target = 9;
-            foreach(int i in easy.TwoSum(nums, target)) {
-                Console.WriteLine(i);
-            }
-            
+            Console.WriteLine(easy.IsValid("{(]}"));
         }
     }
 }
