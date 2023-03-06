@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -35,8 +35,6 @@ namespace leetCodeTrening
             }         
             return sum;
         }
-<<<<<<< Updated upstream
-=======
 
         /// <summary>
         /// Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input
@@ -73,6 +71,5 @@ namespace leetCodeTrening
             } 
             return stack.Count == 0;
         }
->>>>>>> Stashed changes
     }
 }
